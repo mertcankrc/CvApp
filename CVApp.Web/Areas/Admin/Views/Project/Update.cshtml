@@ -1,0 +1,73 @@
+﻿@model CVApp.DTO.DTO.ProjectsDTO.ProjectsUpdateDTO
+
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">Proje Güncelle</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Proje Adı</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Proje'nin Yapıldığı Kurum</label>
+                <input asp-for="SubTitle" class="form-control" />
+                <span asp-validation-for="SubTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Proje Açıklaması</label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Başlangıç Tarihi</label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Bitiş Tarihi</label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-check">
+                @if (Model.Language == "tr-TR")
+                {
+                    <input type="radio" asp-for="Language" class="form-check-input" value="tr-TR" checked />
+                }
+                else
+                {
+                    <input type="radio" asp-for="Language" class="form-check-input" value="tr-TR" />
+                }
+                <label class="form-check-label">
+                    Türkçe
+                </label>
+            </div>
+            <div class="form-check">
+                @if (Model.Language == "en-US")
+                {
+                    <input type="radio" asp-for="Language" class="form-check-input" value="en-US" checked />
+                }
+                else
+                {
+                    <input type="radio" asp-for="Language" class="form-check-input" value="en-US" />
+
+                }
+                <label class="form-check-label">
+                    İngilizce
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

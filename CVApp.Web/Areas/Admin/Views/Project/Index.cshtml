@@ -1,0 +1,72 @@
+﻿@model List<CVApp.DTO.DTO.ProjectsDTO.ProjectsListDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">Projelerim</h1>
+<div class="row">
+    <div class="col-md-4 mt-2 ml-1 mb-1">
+        <a asp-action="Create" asp-controller="Project" class="btn btn-success">Yeni Proje</a>
+
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Proje Adı
+            </th>
+            <th>
+                Projenin yapıldığı Kurum
+            </th>
+            <th>
+                Projenin Açıklaması
+            </th>
+            <th>
+                Başlangıç Tarihi
+            </th>
+            <th>
+                Bitiş Tarihi
+            </th>
+            <th>
+                Dil
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+
+                </td>
+                <td>
+                    <a asp-action="Update" asp-controller="Project" asp-route-id="@item.Id" class="btn btn-info">Güncelle</a>
+                    <a asp-action="Delete" asp-controller="Project" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

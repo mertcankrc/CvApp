@@ -1,0 +1,73 @@
+﻿@model List<CVApp.DTO.DTO.EducationDTO.EducationListDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">Eğitimler</h1>
+
+<p>
+    <a asp-action="Create">Yeni Eğitim Bilgisi</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Eğitim Kurumu
+            </th>
+            <th>
+                Alan
+            </th>
+            <th>
+                Açıklama
+            </th>
+            <th>
+                Başlangıç Tarihi
+            </th>
+            <th>
+                Bitiş Tarihi
+            </th>
+            <th>
+                Not Ortalaması
+            </th>
+            <th>
+                Dil
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                <a asp-action="Update" asp-controller="Education" asp-route-id="@item.Id" class="btn btn-info">Güncelle</a>
+                <a asp-action="Delete" asp-controller="Education" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

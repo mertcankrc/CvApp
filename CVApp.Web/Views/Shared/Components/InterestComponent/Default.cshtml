@@ -1,0 +1,16 @@
+﻿@model List<CVApp.DTO.DTO.InterestDTO.InterestListDTO>
+<section class="resume-section" id="interests">
+    <div class="resume-section-content">
+        <h2 class="mb-5">@ViewData["Interests"]</h2>
+        <ul class="fa-ul mb-0">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <span class="fa-li"><i class="fas fa-check"></i></span>
+                    @item.Description
+                </li>
+            }
+
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,53 @@
+﻿@model List<CVApp.DTO.DTO.CertificationDTO.CertificationListDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">Sertifikalar</h1>
+<div class="row">
+    <div class="col-md-4 mt-2 ml-1 mb-1">
+        <a asp-action="CreateCertificate" asp-controller="Certificate" class="btn btn-success">Yeni Sertifika</a>
+
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Sertifika Numarası
+            </th>
+            <th>
+                Açıklama
+            </th>
+            <th>
+                Dil
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                <a asp-action="Update" asp-controller="Certificate" asp-route-id="@item.Id" class="btn btn-info">Güncelle</a>
+                <a asp-action="Delete" asp-controller="Certificate" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

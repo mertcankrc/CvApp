@@ -1,0 +1,38 @@
+﻿@model List<CVApp.DTO.DTO.EducationDTO.EducationListDTO>
+<section class="resume-section" id="education">
+    <div class="resume-section-content">
+        <h2 class="mb-5">@ViewData["Education"]</h2>
+
+        @foreach (var item in Model)
+        {
+            <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                <div class="flex-grow-1">
+                    <h3 class="mb-0">@item.Title</h3>
+                    <div class="subheading mb-3">@item.SubTitle</div>
+                    <div>@item.Description</div>
+                    <p>GPA: @item.GNO</p>
+                </div>
+                <div class="flex-shrink-0">
+                    <span class="text-primary">
+                        @(((DateTime)item.StartDate).ToString("Y")) -
+                        @if (item.EndDate.HasValue)
+                        {
+                            string getDate = Convert.ToDateTime(item.EndDate).ToString("Y");
+
+                            @Html.DisplayFor(x=> getDate,"EndDate") 
+
+                        }
+                        else
+                        {
+                            <span>@ViewData["Present"]</span>
+                        }
+
+
+                    </span>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</section>

@@ -1,0 +1,43 @@
+﻿@model List<CVApp.DTO.DTO.AppUserDTO.AppUserListDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">İlgi Alanları</h1>
+
+<p>
+    <a asp-action="Create">Kullanıcı Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                Kullanıcı
+            </th>
+            <th>
+                Dil
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-info">Güncelle</a>
+                    <a asp-action="Delete" asp-controller="Home" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

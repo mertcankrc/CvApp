@@ -1,0 +1,36 @@
+﻿@model CVApp.DTO.DTO.AppUserDTO.AppUserListDTO
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+    @{
+        string culture = Context.Request.Query["culture"].ToString();
+        if (String.IsNullOrEmpty(culture))
+        {
+            culture = "tr-TR";
+        }
+    }
+    <div>
+        @if (culture == "tr-TR")
+        {
+            <a href="?culture=tr-TR" style="color:wheat"> <b>Türkçe</b></a> <b style="color:wheat;"> | </b> <a  href="?culture=en-US" style="color:wheat">English</a>
+        }
+        else
+        {
+            <a href="?culture=tr-TR" style="color:wheat">Türkçe</a> <b style="color:wheat"> | </b><b><a href="?culture=en-US" style="color:wheat">English</a></b>
+        }
+    </div>
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">
+        <span class="d-block d-lg-none">@Model.FirstName @Model.LastName</span>
+        <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="~/img/@Model.ImageUrl" alt="@Model.FirstName @Model.LastName img" /></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">@ViewData["About"]</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">@ViewData["Experience"]</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">@ViewData["Education"]</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">@ViewData["Skills"]</a></li>
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">@ViewData["Interests"]</a></li>
+            @*<li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">@ViewData["Certification"]</a></li>*@
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">@ViewData["Projects"]</a></li>
+        </ul>
+    </div>
+</nav>

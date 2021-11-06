@@ -1,0 +1,45 @@
+﻿@model List<CVApp.DTO.DTO.SkillDTO.SkillListDTO>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="mt-4">Yetenekler</h1>
+
+<p>
+    <a asp-action="Create">Yeni Yetenek Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Yetenek
+            </th>
+            <th>
+                Dil
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Language)
+            </td>
+            <td>
+                <a asp-action="Update" asp-controller="Skill" asp-route-id="@item.Id" class="btn btn-info">Güncelle</a>
+                <a asp-action="Delete" asp-controller="Skill" asp-route-id="@item.Id" class="btn btn-danger" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

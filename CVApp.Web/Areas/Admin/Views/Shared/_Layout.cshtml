@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CV Admin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">CV Admin</div>
+            <div class="list-group list-group-flush">
+                <a href="/admin/home/index" class="list-group-item list-group-item-action bg-light">Bilgilerim</a>
+                <a href="/admin/password/change" class="list-group-item list-group-item-action bg-light">Şifre Değişikliği</a>
+                <a href="/admin/certificate/index" class="list-group-item list-group-item-action bg-light">Sertifika Bilgilerim</a>
+                <a href="/admin/education/index" class="list-group-item list-group-item-action bg-light">Eğitim Bilgilerim</a>
+                <a href="/admin/experience/index" class="list-group-item list-group-item-action bg-light">Tecrübe Bilgilerim</a>
+                <a href="/admin/interests/index" class="list-group-item list-group-item-action bg-light">Hobilerim</a>
+                <a href="/admin/skill/index" class="list-group-item list-group-item-action bg-light">Yeteneklerim</a>
+                <a href="/admin/socialmedia/index" class="list-group-item list-group-item-action bg-light">Sosyal Medyalarım</a>
+                <a href="/admin/project/index" class="list-group-item list-group-item-action bg-light">Projelerim</a>
+
+                <a href="/admin/auth/logout" class="list-group-item list-group-item-action bg-light">Çıkış Yap</a>
+
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Menü</button>
+
+            </nav>
+
+            <div class="container-fluid">
+                
+                @if (TempData["Message"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show m-2" role="alert">
+                        @TempData["Message"].ToString()
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                }
+
+                @RenderBody()
+            </div>
+        </div>
+
+     
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/jquery/jquery.min.js"></script>
+    <script src="~/twitter-bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    <script>$("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });</script>
+
+</body>
+
+</html>

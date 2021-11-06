@@ -1,0 +1,31 @@
+﻿@model CVApp.Web.Models.AppUserUpdatePassword
+@{
+    ViewData["Title"] = "Change";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+
+<h1 class="mt-4">Şifre Güncelle</h1>
+<div class="alert alert-warning" role="alert">
+    Şifre güncelleme işleminden sonra login ekranına yönlendirileceksiniz.
+</div>
+<form asp-action="Change" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="@Model.Id" />
+    <div class="form-group">
+        <label>Eski Şifre:</label><span asp-validation-for="@Model.OldPass"></span>
+        <input asp-for="@Model.OldPass"  type="password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Yeni Şifre:</label><span asp-validation-for="@Model.NewPass"></span>
+        <input asp-for="@Model.NewPass" type="password" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Yeni Şifre (Tekrar):</label><span asp-validation-for="@Model.NewPassAgain"></span>
+        <input asp-for="@Model.NewPassAgain"  type="password" class="form-control" />
+    </div>
+    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Kaydet</button>
+    </div>
+</form>
